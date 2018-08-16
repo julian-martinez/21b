@@ -1,6 +1,6 @@
 # twentyone_buttons
 
-A new Flutter application.
+A Flutter replica of 21 Buttons just for educational purposes. No copyright infingement intended.
 
 ## Getting Started
 
