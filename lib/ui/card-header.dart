@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardHeader extends StatefulWidget {
-  CardHeader({Key key, @required this.dateTime}) : super(key: key);
+  CardHeader({Key key, @required this.nick, @required this.dateTime}) : super(key: key);
 
+  final String nick;
   final DateTime dateTime;
 
   @override
@@ -17,7 +18,7 @@ class _CardHeaderState extends State<CardHeader> {
       child: new Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          new Text('Nick de usuario', textAlign: TextAlign.center,),
+          new Text(widget.nick, textAlign: TextAlign.center,),
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[

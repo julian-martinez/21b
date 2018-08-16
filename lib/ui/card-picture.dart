@@ -3,11 +3,15 @@ import 'dart:ui' as ui;
 import 'dart:async';
 
 class CardPicture extends StatelessWidget {
+  CardPicture({@required this.picturePath});
+
+  final String picturePath;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       child: new FutureBuilder<ui.Image>(
-        future: _getImage(),
+        future: _getImage(picturePath),
         builder: (BuildContext context, AsyncSnapshot<ui.Image> snapshot) {
           if (snapshot.hasData) {
             ui.Image image = snapshot.data;
@@ -15,7 +19,7 @@ class CardPicture extends StatelessWidget {
               children: <Widget>[
                 new AspectRatio(
                   aspectRatio: _validAspectRatioImage(image.width, image.height),
-                  child: new Image.asset('assets/chico-4.jpg'),
+                  child: new Image.asset(picturePath),
                 )
               ],
             );
@@ -28,9 +32,9 @@ class CardPicture extends StatelessWidget {
   }
 }
 
-Future<ui.Image> _getImage(){
+Future<ui.Image> _getImage(String picturePath){
   Completer<ui.Image> completer = new Completer<ui.Image>();
-  new AssetImage('assets/chico-4.jpg')
+  new AssetImage(picturePath)
       .resolve(new ImageConfiguration())
       .addListener((ImageInfo info, bool _) => completer.complete(info.image));
   return completer.future;
