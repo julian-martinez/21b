@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar {
-  PreferredSizeWidget build() {
-    return new AppBar(
+  Widget build() {
+    return new SliverAppBar(
+      floating: true,
       backgroundColor: Colors.white,
+      elevation: 2.0,
+      forceElevated: true,
       centerTitle: true,
       title: new RichText(
         //textAlign: TextAlign.center,

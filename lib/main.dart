@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: new Scaffold(
-        appBar: CustomAppBar().build(),
+        backgroundColor: Colors.white,
+        //appBar: CustomAppBar().build(),
         body: new Home(title: 'Home'),
       )
     );
