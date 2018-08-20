@@ -9,15 +9,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: _theme,
       home: new Scaffold(
         backgroundColor: Colors.white,
-        //appBar: CustomAppBar().build(),
         body: new Home(title: 'Home'),
       )
     );
   }
 }
+
+final ThemeData _theme = new ThemeData(
+    brightness: Brightness.light,
+    primarySwatch: Colors.lightGreen,
+    accentColor: Colors.orange,
+    textTheme: new TextTheme(
+      body1: new TextStyle(
+          fontSize: 16.0
+      ),
+    )
+);
 

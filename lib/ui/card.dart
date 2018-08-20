@@ -7,31 +7,29 @@ import '../ui/card-comments.dart';
 
 import '../model/comment.dart';
 
-class CardElement extends StatefulWidget {
-  CardElement({Key key, @required this.nick, @required this.dateTime, @required this.asset, @required this.views, @required this.likes, @required this.liked, this.comments}): super(key: key);
+class CardBody extends StatefulWidget {
+  CardBody({Key key, @required this.asset, @required this.views, @required this.likes, @required this.liked, this.pictureComment, this.comments}): super(key: key);
 
-  final String nick;
-  final DateTime dateTime;
   final String asset;
   int views;
   int likes;
   bool liked;
+  final String pictureComment;
   List<Comment> comments;
 
   @override
-  _CardElementState createState() => _CardElementState();
+  _CardBodyState createState() => _CardBodyState();
 }
 
-class _CardElementState extends State<CardElement> {
+class _CardBodyState extends State<CardBody> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: new BoxDecoration(
+          color: Colors.white
+      ),
       child: new Column(
         children: <Widget>[
-          new CardHeader(
-            nick: widget.nick,
-            dateTime: widget.dateTime
-          ),
           new CardPicture(
             picturePath: widget.asset
           ),
@@ -39,6 +37,9 @@ class _CardElementState extends State<CardElement> {
             views: widget.views.toString(),
             likes: widget.likes.toString(),
             liked: widget.liked
+          ),
+          new PictureComment(
+            pictureComment: widget.pictureComment,
           ),
           new CardComments(
             comments: widget.comments,

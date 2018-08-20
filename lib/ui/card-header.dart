@@ -15,6 +15,9 @@ class _CardHeaderState extends State<CardHeader> {
   @override
   Widget build(BuildContext context) {
     return new Container(
+      decoration: new BoxDecoration(
+        color: Colors.white
+      ),
       child: new Stack(
         alignment: Alignment.center,
         children: <Widget>[

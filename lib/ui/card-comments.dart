@@ -13,27 +13,6 @@ class CardComments extends StatelessWidget {
       child: new Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: _getComments()
-            /*
-        <Widget>[
-          new CommentWidget(
-              author: 'Nick1',
-              comment: 'Texto de prueba'
-          ),
-          new CommentWidget(
-              author: 'Nick2',
-              comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'
-          ),
-          new GestureDetector(
-            onTap: (){
-              print('Container clicked');
-            },
-            child: new Padding(
-              padding: const EdgeInsets.only(top: 4.0),
-              child: new Text('+ Añadir comentario'),
-            ),
-          )
-        ],
-        */
       ),
     );
   }

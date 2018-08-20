@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:async';
 
+import 'package:fluttery/framing.dart';
+
 class CardPicture extends StatelessWidget {
   CardPicture({@required this.picturePath});
 
@@ -46,3 +48,34 @@ double _validAspectRatioImage(int width, int height){
   else if (image > 1.0) return 1.0;
   else return image;
 }
+
+class PictureComment extends StatelessWidget {
+  PictureComment({this.pictureComment});
+
+  final String pictureComment;
+
+  @override
+  Widget build(BuildContext context) {
+    if (pictureComment != null && pictureComment != ''){
+      return Container(
+        padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+        child: new Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Expanded(
+              child: new Text(pictureComment,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: new TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    } else return new Container();
+  }
+}
+
