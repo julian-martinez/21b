@@ -27,7 +27,7 @@ class _CardHeaderState extends State<CardHeader> {
             children: <Widget>[
               new Container(
                 child: new Text(
-                    widget.dateTime.difference(DateTime.now()).inMinutes.toString()
+                    calculateDateTimeDifference(widget.dateTime)
                 ),
               ),
               new Container(
@@ -49,6 +49,23 @@ class _CardHeaderState extends State<CardHeader> {
       ),
     );
   }
+
+  String calculateDateTimeDifference(DateTime origin){
+    int seconds = DateTime.now().difference(origin).inSeconds.abs();
+    if (seconds < 60){
+      return seconds.toString() + 's';
+    } else if (seconds < 60*60){
+      return (seconds/60).round().toString() + 'm';
+    } else if (seconds < 60*60*24){
+      return (seconds/(60*60)).round().toString() + 'h';
+    } else if (seconds < 60*60*24*7){
+      return (seconds/(60*60*24)).round().toString() + 'd';
+    } else {
+      return (seconds/(60*60*24*7)).round().toString() + 'w';
+    }
+  }
+  
+  
 }
 
 class Constants{

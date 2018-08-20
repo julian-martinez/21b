@@ -27,10 +27,10 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     List<ElementItem> elements() => [
-      new ElementItem('axelmod', DateTime.now(), 'assets/chico-4.jpg', 55, 8, false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor', mockComments),
-      new ElementItem('angelkiss', DateTime.now(), 'assets/chica-4.jpg', 55, 8, false, 'Lorem ipsum', mockComments),
-      new ElementItem('oroalera', DateTime.now(), 'assets/chica-3.jpg', 55, 8, false, '', mockComments),
-      new ElementItem('jisasfist', DateTime.now(), 'assets/chico-3.jpg', 55, 8, false, '', mockComments)
+      new ElementItem('axelmod', DateTime.parse("2018-08-20 11:03:13Z"), 'assets/chico-4.jpg', 55, 8, false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor', mockComments),
+      new ElementItem('angelkiss', DateTime.parse("2018-08-20 10:29:43Z"), 'assets/chica-4.jpg', 55, 8, false, 'Lorem ipsum', mockComments),
+      new ElementItem('oroalera', DateTime.parse("2018-08-19 11:00:00Z"), 'assets/chica-3.jpg', 55, 8, false, '', mockComments),
+      new ElementItem('jisasfist', DateTime.parse("2018-08-01 13:00:00Z"), 'assets/chico-3.jpg', 55, 8, false, '', mockComments)
     ];
 
     return new Scaffold(
@@ -74,36 +74,6 @@ class _HomeState extends State<Home> {
       bottomNavigationBar: new HomeBottomNav(index: 0)
     );
   }
-}
-
-List<Widget> singleList(List<ElementItem> elements) {
-  List<Widget> list = <Widget>[
-    new SingleChildScrollView(
-      child: new ListView.builder(itemBuilder: (context, index) {
-        return new StickyHeader(
-          header: new Container(
-            child: new CardHeader(
-                nick: elements[index].nick, dateTime: elements[index].dateTime),
-          ),
-          content: new Container(
-            child: new Column(
-              children: <Widget>[
-                new CardPicture(picturePath: elements[index].image),
-                new CardSocial(
-                    views: elements[index].views.toString(),
-                    likes: elements[index].likes.toString(),
-                    liked: elements[index].liked),
-                new CardComments(
-                  comments: elements[index].comments,
-                )
-              ],
-            ),
-          ),
-        );
-      }),
-    )
-  ];
-  return list;
 }
 
 List<Comment> mockComments = <Comment>[
