@@ -21,7 +21,24 @@ class _CardHeaderState extends State<CardHeader> {
       child: new Stack(
         alignment: Alignment.center,
         children: <Widget>[
-          new Text(widget.nick, textAlign: TextAlign.center,),
+          new Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new DrawCircle.small(
+                color: Colors.red,
+                alignment: Alignment.centerRight,
+              ),
+              new Container(
+                padding: const EdgeInsets.only(left: 4.0, right: 4.0),
+                child: new Text(widget.nick, textAlign: TextAlign.center,),
+              ),
+              new DrawCircle.small(
+                color: Colors.red,
+                alignment: Alignment.centerLeft,
+              ),
+            ],
+          ),
+
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -67,6 +84,32 @@ class _CardHeaderState extends State<CardHeader> {
   
   
 }
+
+
+class DrawCircle extends StatelessWidget {
+  DrawCircle({@required this.size, @required this.color, this.alignment});
+  DrawCircle.small({@required this.color, this.size = 5.0, this.alignment});
+  DrawCircle.big({@required this.color, this.size = 10.0, this.alignment});
+
+  final double size;
+  final Color color;
+  final Alignment alignment;
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+      alignment: alignment,
+      decoration: new BoxDecoration(
+          borderRadius: new BorderRadius.all(new Radius.circular(size)),
+          border: new Border.all(
+              color: color,
+              width: size,
+          )
+      ),
+    );
+  }
+}
+
 
 class Constants{
   static const String activate = 'Activar notificaciones de Post';
