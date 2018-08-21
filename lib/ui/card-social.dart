@@ -12,6 +12,15 @@ class CardSocial extends StatefulWidget {
 }
 
 class _CardSocialState extends State<CardSocial> {
+
+  bool _liked;
+
+  @override
+  void initState() {
+    super.initState();
+    _liked = widget.liked;
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Container(
@@ -46,14 +55,18 @@ class _CardSocialState extends State<CardSocial> {
             children: <Widget>[
               new Container(
                 child: new IconButton(
-                    icon: getLikedIcon(widget.liked),
-                    onPressed: null
+                    icon: getLikedIcon(_liked),
+                    onPressed: (){
+                      setState(() {
+                        _liked = !_liked;
+                      });
+                    }
                 ),
               ),
               new Container(
                 child: new IconButton(
                     icon: new Icon(Icons.share),
-                    onPressed: null
+                    onPressed: (){}
                 ),
               ),
             ],
@@ -62,6 +75,8 @@ class _CardSocialState extends State<CardSocial> {
       ),
     );
   }
+
+
 }
 
 Icon getLikedIcon(bool liked){
