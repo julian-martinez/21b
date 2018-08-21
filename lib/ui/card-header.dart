@@ -30,7 +30,7 @@ class _CardHeaderState extends State<CardHeader> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 new DrawCircle.small(
-                  color: _color,
+                  borderColor: _color,
                   alignment: Alignment.centerRight,
                 ),
                 new Container(
@@ -38,7 +38,7 @@ class _CardHeaderState extends State<CardHeader> {
                   child: new Text(widget.nick, textAlign: TextAlign.center,),
                 ),
                 new DrawCircle.small(
-                  color: _color,
+                  borderColor: _color,
                   alignment: Alignment.centerLeft,
                 ),
               ],
@@ -97,12 +97,13 @@ class _CardHeaderState extends State<CardHeader> {
 
 
 class DrawCircle extends StatelessWidget {
-  DrawCircle({@required this.size, @required this.color, this.alignment});
-  DrawCircle.small({@required this.color, this.size = 5.0, this.alignment});
-  DrawCircle.big({@required this.color, this.size = 10.0, this.alignment});
+  DrawCircle({@required this.borderColor, @required this.size, this.alignment});
+  DrawCircle.mini({@required this.borderColor, this.size = 3.0, this.alignment});
+  DrawCircle.small({@required this.borderColor, this.size = 5.0, this.alignment});
+  DrawCircle.big({@required this.borderColor, this.size = 10.0, this.alignment});
 
   final double size;
-  final Color color;
+  final Color borderColor;
   final Alignment alignment;
 
   @override
@@ -112,7 +113,7 @@ class DrawCircle extends StatelessWidget {
       decoration: new BoxDecoration(
           borderRadius: new BorderRadius.all(new Radius.circular(size)),
           border: new Border.all(
-              color: color,
+              color: borderColor,
               width: size,
           )
       ),

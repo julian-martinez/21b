@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
 final ThemeData _theme = new ThemeData(
     brightness: Brightness.light,
     primarySwatch: Colors.lightGreen,
-    accentColor: Colors.orange,
+    accentColor: Color.fromRGBO(252, 74, 91, 1.0),
     textTheme: new TextTheme(
       body1: new TextStyle(
           fontSize: 16.0

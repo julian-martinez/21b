@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'card-header.dart';
+import 'package:fluttery/framing.dart';
 
 class HomeBottomNav extends StatelessWidget {
   HomeBottomNav({@required this.index}) : super();
@@ -10,7 +12,7 @@ class HomeBottomNav extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: index,
       type: BottomNavigationBarType.fixed,
-      fixedColor: Colors.lightGreen,
+      fixedColor: Theme.of(context).accentColor,
       items: [
         BottomNavigationBarItem(
             icon: new Icon(Icons.home),
@@ -25,7 +27,27 @@ class HomeBottomNav extends StatelessWidget {
             title: new Text('Publicar')
         ),
         BottomNavigationBarItem(
-            icon: new Icon(Icons.dashboard),
+            icon: new Container(
+              child: new Stack(
+                children: <Widget>[
+                  new Icon(Icons.dashboard),
+                  new Positioned(
+                    left: 16.0,
+                    child: new DrawCircle.small(
+                      borderColor: Colors.white,
+                    ),
+                  ),
+                  new Positioned(
+                    left: 18.0,
+                    top: 2.0,
+                    child: new DrawCircle.mini(
+                      borderColor: Theme.of(context).accentColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
             title: new Text('Perfil')
         ),
       ],
