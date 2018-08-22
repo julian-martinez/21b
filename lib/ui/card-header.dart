@@ -136,6 +136,8 @@ class ConstColors{
   static const List<Color> choices = <Color>[
     olive, darkbeige, beige, ocre, salmon, blue, darkblue, red, brown
   ];
+
+  var randomColor = choices[new Random().nextInt(ConstColors.choices.length)];
 }
 
 

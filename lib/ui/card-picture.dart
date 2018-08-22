@@ -2,28 +2,31 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 import 'dart:async';
 
+import 'card-header.dart';
+import '../model/point.dart';
 import 'package:fluttery/framing.dart';
 
 class CardPicture extends StatelessWidget {
-  CardPicture({@required this.picturePath});
+  CardPicture({@required this.picturePath, this.points});
 
   final String picturePath;
+  final List<Point> points;
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       child: new FutureBuilder<ui.Image>(
         future: _getImage(picturePath),
         builder: (BuildContext context, AsyncSnapshot<ui.Image> snapshot) {
           if (snapshot.hasData) {
             ui.Image image = snapshot.data;
-            return new Stack(
-              children: <Widget>[
-                new AspectRatio(
-                  aspectRatio: _validAspectRatioImage(image.width, image.height),
-                  child: new Image.asset(picturePath),
-                )
-              ],
+            return new AspectRatio(
+              aspectRatio: image.width.roundToDouble()/image.height.roundToDouble(),
+              child: new Stack(
+                children: _pictureStack(screenWidth, image.width, image.height),
+              ),
             );
           } else {
             return new Text('Loading...');
@@ -32,6 +35,26 @@ class CardPicture extends StatelessWidget {
       ),
     );
   }
+
+
+  List<Widget> _pictureStack(double screenWidth, int width, int height){
+    List<Widget> list = new List();
+    list.add(new Image.asset(picturePath));
+    //calculate points position
+    double reduction = screenWidth/width;
+    for(Point p in points){
+      list.add(
+        new Positioned(
+          top: (height * reduction) * (p.relativeY/100) - 5.0,
+          left: (width * reduction) * (p.relativeX/100) - 5.0,
+          child: new DrawCircle.big(borderColor: ConstColors().randomColor)
+        ),
+      );
+
+    }
+    return list;
+  }
+
 }
 
 Future<ui.Image> _getImage(String picturePath){
@@ -40,13 +63,6 @@ Future<ui.Image> _getImage(String picturePath){
       .resolve(new ImageConfiguration())
       .addListener((ImageInfo info, bool _) => completer.complete(info.image));
   return completer.future;
-}
-
-double _validAspectRatioImage(int width, int height){
-  double image = width.roundToDouble()/height.roundToDouble();
-  if (image < 0.5625) return 0.5625;
-  else if (image > 1.0) return 1.0;
-  else return image;
 }
 
 class PictureComment extends StatelessWidget {

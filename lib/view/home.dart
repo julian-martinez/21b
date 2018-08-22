@@ -3,13 +3,11 @@ import 'package:flutter/material.dart';
 import '../ui/appbar.dart';
 import '../ui/card.dart';
 import '../ui/card-header.dart';
-import '../ui/card-picture.dart';
-import '../ui/card-social.dart';
-import '../ui/card-comments.dart';
 import '../ui/home-bottom-nav.dart';
 
 import '../model/comment.dart';
 import '../model/element.dart';
+import '../model/point.dart';
 
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:fluttery/framing.dart';
@@ -26,12 +24,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    List<ElementItem> elements() => [
-      new ElementItem('axelmod', DateTime.parse("2018-08-20 11:03:13Z"), 'assets/chico-4.jpg', 55, 8, false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor', mockComments),
-      new ElementItem('angelkiss', DateTime.parse("2018-08-20 10:29:43Z"), 'assets/chica-4.jpg', 55, 8, false, 'Lorem ipsum', mockComments),
-      new ElementItem('oroalera', DateTime.parse("2018-08-19 11:00:00Z"), 'assets/chica-3.jpg', 55, 8, false, '', mockComments),
-      new ElementItem('jisasfist', DateTime.parse("2018-08-01 13:00:00Z"), 'assets/chico-3.jpg', 55, 8, false, '', mockComments)
-    ];
+
 
     return new Scaffold(
       body: new NestedScrollView(
@@ -48,26 +41,27 @@ class _HomeState extends State<Home> {
                       overlapHeaders: false,
                       header: new Container(
                         child: new CardHeader(
-                            nick: elements()[index].nick,
-                            dateTime: elements()[index].dateTime),
+                            nick: elements[index].nick,
+                            dateTime: elements[index].dateTime),
                       ),
                       content: new Container(
                         child: new Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: <Widget>[
                             new CardBody(
-                              asset: elements()[index].image,
-                              views: elements()[index].views,
-                              likes: elements()[index].likes,
-                              liked: elements()[index].liked,
-                              pictureComment: elements()[index].pictureComment,
-                              comments: elements()[index].comments,
+                              asset: elements[index].image,
+                              points: elements[index].points,
+                              views: elements[index].views,
+                              likes: elements[index].likes,
+                              liked: elements[index].liked,
+                              pictureComment: elements[index].pictureComment,
+                              comments: elements[index].comments,
                             ),
                           ],
                         ),
                       ),
                   ));
-                }, childCount: elements().length),
+                }, childCount: elements.length),
               )
             ],
           )),
@@ -75,6 +69,19 @@ class _HomeState extends State<Home> {
     );
   }
 }
+
+List<ElementItem> elements = [
+  new ElementItem('axelmod', DateTime.parse("2018-08-20 11:03:13Z"), 'assets/chico-4.jpg', points, 55, 8, false, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor', mockComments),
+  new ElementItem('angelkiss', DateTime.parse("2018-08-20 10:29:43Z"), 'assets/chica-4.jpg', [], 55, 8, false, 'Lorem ipsum', mockComments),
+  new ElementItem('oroalera', DateTime.parse("2018-08-19 11:00:00Z"), 'assets/chica-3.jpg', [], 55, 8, false, '', mockComments),
+  new ElementItem('jisasfist', DateTime.parse("2018-08-01 13:00:00Z"), 'assets/chico-3.jpg', [], 55, 8, false, '', mockComments)
+];
+
+List<Point> points = [
+  new Point(40.0, 55.0, 1),
+  new Point(32.0, 35.0, 2),
+  new Point(45.0, 92.0, 3),
+];
 
 List<Comment> mockComments = <Comment>[
   Comment('Nick1', 'Texto de prueba'),

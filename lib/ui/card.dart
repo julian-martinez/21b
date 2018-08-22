@@ -6,11 +6,13 @@ import '../ui/card-social.dart';
 import '../ui/card-comments.dart';
 
 import '../model/comment.dart';
+import '../model/point.dart';
 
 class CardBody extends StatefulWidget {
-  CardBody({Key key, @required this.asset, @required this.views, @required this.likes, @required this.liked, this.pictureComment, this.comments}): super(key: key);
+  CardBody({Key key, @required this.asset, this.points, @required this.views, @required this.likes, @required this.liked, this.pictureComment, this.comments}): super(key: key);
 
   final String asset;
+  final List<Point> points;
   int views;
   int likes;
   bool liked;
@@ -31,7 +33,8 @@ class _CardBodyState extends State<CardBody> {
       child: new Column(
         children: <Widget>[
           new CardPicture(
-            picturePath: widget.asset
+            picturePath: widget.asset,
+            points: widget.points,
           ),
           new CardSocial(
             views: widget.views.toString(),
