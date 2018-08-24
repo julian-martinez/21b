@@ -45,8 +45,8 @@ class CardPicture extends StatelessWidget {
     for(Point p in points){
       list.add(
         new Positioned(
-          top: (height * reduction) * (p.relativeY/100) - 5.0,
-          left: (width * reduction) * (p.relativeX/100) - 5.0,
+          top: (height * reduction) * (p.relativeY) - 5.0,
+          left: (width * reduction) * (p.relativeX) - 5.0,
           child: new DrawCircle.big(borderColor: ConstColors().randomColor)
         ),
       );

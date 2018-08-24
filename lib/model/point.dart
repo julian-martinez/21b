@@ -1,6 +1,7 @@
 class Point {
   Point(this.relativeX, this.relativeY, this.productId);
 
+  //relativeX and relativeY represents from 0.0 to 1.0 the relative axis position
   final double relativeX;
   final double relativeY;
   final int productId;

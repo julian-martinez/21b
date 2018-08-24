@@ -78,9 +78,9 @@ List<ElementItem> elements = [
 ];
 
 List<Point> points = [
-  new Point(40.0, 55.0, 1),
-  new Point(32.0, 35.0, 2),
-  new Point(45.0, 92.0, 3),
+  new Point(0.40, 0.55, 1),
+  new Point(0.32, 0.35, 2),
+  new Point(0.45, 0.92, 3),
 ];
 
 List<Comment> mockComments = <Comment>[
