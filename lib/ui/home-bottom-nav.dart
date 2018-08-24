@@ -3,13 +3,15 @@ import 'card-header.dart';
 import 'package:fluttery/framing.dart';
 
 class HomeBottomNav extends StatelessWidget {
-  HomeBottomNav({@required this.index}) : super();
+  HomeBottomNav({@required this.index, this.onTap}) : super();
 
   final int index;
+  final ValueChanged<int> onTap;
 
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      onTap: onTap,
       currentIndex: index,
       type: BottomNavigationBarType.fixed,
       fixedColor: Theme.of(context).accentColor,

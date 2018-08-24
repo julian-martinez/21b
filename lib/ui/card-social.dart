@@ -53,7 +53,8 @@ class _CardSocialState extends State<CardSocial> {
           new Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              new Container(
+              new Material(
+                color: Colors.white,
                 child: new IconButton(
                     icon: getLikedIcon(_liked),
                     onPressed: (){
@@ -63,7 +64,8 @@ class _CardSocialState extends State<CardSocial> {
                     }
                 ),
               ),
-              new Container(
+              new Material(
+                color: Colors.white,
                 child: new IconButton(
                     icon: new Icon(Icons.share),
                     onPressed: (){}

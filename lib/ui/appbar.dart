@@ -36,7 +36,7 @@ class CustomAppBar {
       actions: <Widget>[
         new IconButton(
             icon: new Icon(Icons.person_add),
-            onPressed: null
+            onPressed: (){}
         )
       ],
     );
